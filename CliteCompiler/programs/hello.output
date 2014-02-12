@@ -1,0 +1,27 @@
+Begin parsing... programs/hello.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<c, char>, <i, int>}
+  Block: 
+    Assignment: 
+      Variable: i
+      Unary: 
+        Operator: neg
+        IntValue: 5
+    Assignment: 
+      Variable: c
+      CharValue: h
+    Assignment: 
+      Variable: i
+      Binary: 
+        Operator: +
+        Variable: c
+        IntValue: 3
+
+Begin type checking...
+
+Type map:
+{ <c, char>, <i, int> }
+type error for +
+Java Result: 1

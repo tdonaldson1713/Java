@@ -1,0 +1,36 @@
+Begin parsing... programs/cast.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<f, float>, <i, int>, <c, char>}
+  Block: 
+    Assignment: 
+      Variable: f
+      Unary: 
+        Operator: neg
+        Unary: 
+          Operator: float
+          Variable: i
+    Assignment: 
+      Variable: i
+      Unary: 
+        Operator: int
+        Variable: f
+    Assignment: 
+      Variable: c
+      Unary: 
+        Operator: char
+        Variable: i
+    Assignment: 
+      Variable: f
+      Binary: 
+        Operator: +
+        Variable: i
+        Unary: 
+          Operator: int
+          Variable: c
+
+Begin type checking...
+
+Type map:
+{ <f, float>, <c, char>, <i, int> }
