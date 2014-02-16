@@ -23,7 +23,7 @@ public class AffineCipher {
 	// E(x) = 32x + 16
 	public static String Encrypt(String to_encrypt) {
 		to_encrypt = removespaces(to_encrypt);
-		
+
 		String encrypted = "";
 		int x, pos_char;
 

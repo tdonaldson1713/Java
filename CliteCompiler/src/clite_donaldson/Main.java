@@ -24,7 +24,7 @@ public class Main {
 		files.add("programs/factorial.cpp");
 		files.add("programs/array.cpp");
 
-		String filename = "programs/array.cpp";
+		String filename = "programs/hello.cpp";
     	System.out.println("Begin parsing... " + filename);
     	Parser parser  = new Parser(new Lexer(filename));
         Program prog = parser.program();
