@@ -26,6 +26,7 @@ public class Human extends Character implements CharacterInterface {
 	private double crit_base = 0.0000000;
 	private double crit_bonus_damage = 0.40;
 	private double crit_max = 0.0500000;
+	private double exp_inc_perc = 1.15;
 	private double shield_slam_damage = 1.2;
 	private double weapon_slam_damage = 0.6;
 	
@@ -130,12 +131,27 @@ public class Human extends Character implements CharacterInterface {
 		return mOffHand;
 	}
 
+	/*
+	 * This function must be called at the end of
+	 * every battle so that the character's new stats
+	 * can be saved to file.
+	 */
 	public void end_of_battle() {
 		if (def_inc) {
 			resetDefense();
 		}
+		
+		save_character(characterFile);
 	}
 	
+	/*
+	 * This function can be called whenever we need
+	 * to save the character information, while outside 
+	 * of a battle.
+	 */
+	public void save() {
+		save_character(characterFile);
+	}
 	/*
 	 * Sets the characters health after using an item to heal.
 	 */
@@ -231,8 +247,39 @@ public class Human extends Character implements CharacterInterface {
 		setAgility(10);
 		setSpeed(5);
 		setHealth(50);
-		initial_set_full_health();
+		setCurrentExp(0);
+		setMaxExp(100);
 		
-		save_initial_load_to_file(characterFile);
+		initial_set_full_health();
+		save_character(characterFile);
+	}
+
+	@Override
+	public void levelup() {
+		setLevel(getLevel() + 1);
+		CharacterDialog.levelup(this, getLevel());
+		increaseExperienceOnLevel();
+	}
+
+	@Override
+	public void increaseExperience(int monster_exp) {
+		boolean level = false;
+		
+		setCurrentExp(getCurrentExp() + monster_exp);
+		while (getCurrentExp() >= getMaxExp()) {
+			levelup();
+			level = true;
+		} 
+		
+		if (!level) {
+			CharacterDialog.display_exp(this);
+		}
+	}
+	
+	@Override
+	public void increaseExperienceOnLevel() {
+		setCurrentExp(getCurrentExp() - getMaxExp());
+		setMaxExp(Double.valueOf(df.format(getMaxExp() * exp_inc_perc)));
+		CharacterDialog.display_exp(this);
 	}
 }

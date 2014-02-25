@@ -34,3 +34,37 @@ Begin type checking...
 
 Type map:
 { <f, float>, <c, char>, <i, int> }
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<f, float>, <i, int>, <c, char>}
+  Block: 
+    Assignment: 
+      Variable: f
+      Unary: 
+        Operator: FLOATNEG
+        Unary: 
+          Operator: I2F
+          Variable: i
+    Assignment: 
+      Variable: i
+      Unary: 
+        Operator: F2I
+        Variable: f
+    Assignment: 
+      Variable: c
+      Unary: 
+        Operator: I2C
+        Variable: i
+    Assignment: 
+      Variable: f
+      Unary: 
+        Operator: I2F
+        Binary: 
+          Operator: INT+
+          Variable: i
+          Unary: 
+            Operator: C2I
+            Variable: c

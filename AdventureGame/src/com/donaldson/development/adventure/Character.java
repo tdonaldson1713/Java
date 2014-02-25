@@ -16,13 +16,16 @@ public class Character {
 	private double mSpeed;
 	private double mHealth;
 	private double mMaxHealth;
-
+	private double mCurrentExp;
+	private double mMaxExp;
+	
 	public Character() {
 		mLevel = 0;
 		mStrength = mDefense = mAgility = mSpeed = mMaxHealth = 0;
+		mCurrentExp = mMaxExp = 0;
 	}
 
-	public Character(int l, double str, double d, double a, double spd, double h) {
+	public Character(int l, double str, double d, double a, double spd, double h, double e, double me) {
 		mLevel = l;
 		mStrength = str;
 		mDefense = d;
@@ -30,6 +33,8 @@ public class Character {
 		mSpeed = spd;
 		mHealth = h;
 		mMaxHealth = h;
+		mCurrentExp = e;
+		mMaxExp = me;
 	}
 
 	public int getLevel() {
@@ -39,9 +44,11 @@ public class Character {
 	public void setLevel(int level) {
 		mLevel = level;
 	}
+	
 	public double getStrength() {
 		return mStrength;
 	}
+	
 	public void setStrength(double strength) {
 		mStrength = strength;
 	}
@@ -85,6 +92,22 @@ public class Character {
 	public void initial_set_full_health() {
 		mMaxHealth = mHealth;
 	}
+	
+	public double getCurrentExp() {
+		return mCurrentExp;
+	}
+
+	public void setCurrentExp(double currentExp) {
+		mCurrentExp = currentExp;
+	}
+
+	public double getMaxExp() {
+		return mMaxExp;
+	}
+
+	public void setMaxExp(double maxExp) {
+		mMaxExp = maxExp;
+	}
 
 	public String toString() {
 		String stats = "Level = " + mLevel + "\nStr = " + mStrength + "\nDef = " +
@@ -93,7 +116,7 @@ public class Character {
 		return stats;
 	}
 
-	public void save_initial_load_to_file(String characterFile) {
+	public void save_character(String characterFile) {
 		try {
 			BufferedWriter b_out = new BufferedWriter(new FileWriter(characterFile));
 			b_out.append("level=" + getLevel());
@@ -102,6 +125,8 @@ public class Character {
 			b_out.append("\nagi=" + getAgility());
 			b_out.append("\nspd=" + getSpeed());
 			b_out.append("\nhp=" + getHealth());
+			b_out.append("\nc_exp=" + getCurrentExp());
+			b_out.append("\nm_exp=" + getMaxExp());
 			b_out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -148,7 +173,13 @@ public class Character {
 						setHealth(Double.valueOf(lines.get(a)));
 						mMaxHealth = getHealth();
 						break;
-					}
+					case 6:
+						setCurrentExp(Double.valueOf(lines.get(a)));
+						break;
+					case 7:
+						setMaxExp(Double.valueOf(lines.get(a)));
+						break;
+					} 
 				}
 
 				reader.close();

@@ -36,5 +36,39 @@ Begin type checking...
 
 Type map:
 { <f, float>, <n, int>, <i, int> }
-type error for *
-Java Result: 1
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<n, int>, <i, int>, <f, float>}
+  Block: 
+    Assignment: 
+      Variable: n
+      IntValue: 3
+    Assignment: 
+      Variable: i
+      IntValue: 0
+    Assignment: 
+      Variable: f
+      FloatValue: 1.0
+    Loop: 
+      Binary: 
+        Operator: INT<
+        Variable: i
+        Variable: n
+      Block: 
+        Assignment: 
+          Variable: i
+          Binary: 
+            Operator: INT+
+            Variable: i
+            IntValue: 1
+        Assignment: 
+          Variable: f
+          Binary: 
+            Operator: FLOAT*
+            Variable: f
+            Unary: 
+              Operator: I2F
+              Variable: i

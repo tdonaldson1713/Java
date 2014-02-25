@@ -25,3 +25,26 @@ Begin type checking...
 
 Type map:
 { <num[2], int>, <temp, int> }
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<num[2], int>, <temp, int>}
+  Block: 
+    Conditional: 
+      Binary: 
+        Operator: INT>
+        ArrayRef: num[0]
+        ArrayRef: num[1]
+      Block: 
+        Assignment: 
+          Variable: temp
+          ArrayRef: num[1]
+        Assignment: 
+          ArrayRef: num[1]
+          ArrayRef: num[0]
+        Assignment: 
+          ArrayRef: num[0]
+          Variable: temp
+      Skip: 
