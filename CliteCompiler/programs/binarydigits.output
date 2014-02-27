@@ -1,0 +1,71 @@
+Begin parsing... programs/binarydigits.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<n, int>, <count, int>}
+  Block: 
+    Assignment: 
+      Variable: n
+      IntValue: 10
+    Assignment: 
+      Variable: count
+      IntValue: 1
+    Loop: 
+      Binary: 
+        Operator: >=
+        Variable: n
+        IntValue: 2
+      Block: 
+        Assignment: 
+          Variable: count
+          Binary: 
+            Operator: +
+            Variable: count
+            IntValue: 1
+        Assignment: 
+          Variable: n
+          Binary: 
+            Operator: /
+            Variable: n
+            IntValue: 2
+
+Begin type checking...programs/binarydigits.cpp
+
+Type map:
+{ <count, int>, <n, int> }
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<n, int>, <count, int>}
+  Block: 
+    Assignment: 
+      Variable: n
+      IntValue: 10
+    Assignment: 
+      Variable: count
+      IntValue: 1
+    Loop: 
+      Binary: 
+        Operator: INT>=
+        Variable: n
+        IntValue: 2
+      Block: 
+        Assignment: 
+          Variable: count
+          Binary: 
+            Operator: INT+
+            Variable: count
+            IntValue: 1
+        Assignment: 
+          Variable: n
+          Binary: 
+            Operator: INT/
+            Variable: n
+            IntValue: 2
+
+Begin interpreting...programs/binarydigits.cpp
+
+Final State
+{ <count, 4>, <n, 1> }

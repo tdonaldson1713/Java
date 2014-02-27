@@ -4,6 +4,12 @@ Program (abstract syntax):
   Declarations: 
     Declarations = {<num[2], int>, <temp, int>}
   Block: 
+    Assignment: 
+      ArrayRef: num[0]
+      IntValue: 2
+    Assignment: 
+      ArrayRef: num[1]
+      IntValue: 1
     Conditional: 
       Binary: 
         Operator: >
@@ -21,7 +27,7 @@ Program (abstract syntax):
           Variable: temp
       Skip: 
 
-Begin type checking...
+Begin type checking...programs/array.cpp
 
 Type map:
 { <num[2], int>, <temp, int> }
@@ -32,6 +38,12 @@ Program (abstract syntax):
   Declarations: 
     Declarations = {<num[2], int>, <temp, int>}
   Block: 
+    Assignment: 
+      ArrayRef: num[0]
+      IntValue: 2
+    Assignment: 
+      ArrayRef: num[1]
+      IntValue: 1
     Conditional: 
       Binary: 
         Operator: INT>
@@ -48,3 +60,8 @@ Program (abstract syntax):
           ArrayRef: num[0]
           Variable: temp
       Skip: 
+
+Begin interpreting...programs/array.cpp
+
+Final State
+{ <num[2], [1, 2]>, <temp, 1> }

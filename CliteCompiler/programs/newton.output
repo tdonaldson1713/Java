@@ -1,0 +1,111 @@
+Begin parsing... programs/newton.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<a, float>, <x, float>, <result, float>}
+  Block: 
+    Assignment: 
+      Variable: a
+      FloatValue: 625.0
+    Assignment: 
+      Variable: x
+      FloatValue: 1.0
+    Loop: 
+      Binary: 
+        Operator: ||
+        Binary: 
+          Operator: >
+          Binary: 
+            Operator: *
+            Variable: x
+            Variable: x
+          Binary: 
+            Operator: +
+            Variable: a
+            FloatValue: 1.0E-4
+        Binary: 
+          Operator: <
+          Binary: 
+            Operator: *
+            Variable: x
+            Variable: x
+          Binary: 
+            Operator: -
+            Variable: a
+            FloatValue: 1.0E-4
+      Assignment: 
+        Variable: x
+        Binary: 
+          Operator: /
+          Binary: 
+            Operator: +
+            Variable: x
+            Binary: 
+              Operator: /
+              Variable: a
+              Variable: x
+          FloatValue: 2.0
+    Assignment: 
+      Variable: result
+      Variable: x
+
+Begin type checking...programs/newton.cpp
+
+Type map:
+{ <result, float>, <a, float>, <x, float> }
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<a, float>, <x, float>, <result, float>}
+  Block: 
+    Assignment: 
+      Variable: a
+      FloatValue: 625.0
+    Assignment: 
+      Variable: x
+      FloatValue: 1.0
+    Loop: 
+      Binary: 
+        Operator: ||
+        Binary: 
+          Operator: FLOAT>
+          Binary: 
+            Operator: FLOAT*
+            Variable: x
+            Variable: x
+          Binary: 
+            Operator: FLOAT+
+            Variable: a
+            FloatValue: 1.0E-4
+        Binary: 
+          Operator: FLOAT<
+          Binary: 
+            Operator: FLOAT*
+            Variable: x
+            Variable: x
+          Binary: 
+            Operator: FLOAT-
+            Variable: a
+            FloatValue: 1.0E-4
+      Assignment: 
+        Variable: x
+        Binary: 
+          Operator: FLOAT/
+          Binary: 
+            Operator: FLOAT+
+            Variable: x
+            Binary: 
+              Operator: FLOAT/
+              Variable: a
+              Variable: x
+          FloatValue: 2.0
+    Assignment: 
+      Variable: result
+      Variable: x
+
+Begin interpreting...programs/newton.cpp
+
+Final State
+{ <result, 25.0>, <a, 625.0>, <x, 25.0> }

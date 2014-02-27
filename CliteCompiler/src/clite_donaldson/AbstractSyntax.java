@@ -297,7 +297,7 @@ class Variable extends VariableRef {
 class ArrayRef extends VariableRef {
     // ArrayRef = String id; Expression index
 //    private String id;
-    private Expression index;
+    public Expression index;
 
     ArrayRef (String s, Expression e) { id = s; index = e; }
 //

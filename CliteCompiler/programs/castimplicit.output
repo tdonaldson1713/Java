@@ -32,7 +32,7 @@ Program (abstract syntax):
             Variable: f
             Variable: i
 
-Begin type checking...
+Begin type checking...programs/castimplicit.cpp
 
 Type map:
 { <f, float>, <n, int>, <i, int> }
@@ -72,3 +72,8 @@ Program (abstract syntax):
             Unary: 
               Operator: I2F
               Variable: i
+
+Begin interpreting...programs/castimplicit.cpp
+
+Final State
+{ <f, 6.0>, <n, 3>, <i, 3> }

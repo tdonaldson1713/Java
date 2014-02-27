@@ -1,0 +1,109 @@
+Begin parsing... programs/nested.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<a, float>, <b, float>, <c, float>, <d, float>}
+  Block: 
+    Assignment: 
+      Variable: a
+      FloatValue: 2.0
+    Assignment: 
+      Variable: b
+      FloatValue: 4.5
+    Assignment: 
+      Variable: c
+      FloatValue: 3.3
+    Assignment: 
+      Variable: d
+      FloatValue: 2.2
+    Conditional: 
+      Binary: 
+        Operator: &&
+        Binary: 
+          Operator: >
+          Variable: a
+          Variable: b
+        Binary: 
+          Operator: >
+          Variable: a
+          Variable: c
+      Assignment: 
+        Variable: d
+        Variable: a
+      Conditional: 
+        Binary: 
+          Operator: >
+          Variable: b
+          Variable: a
+        Conditional: 
+          Binary: 
+            Operator: >
+            Variable: b
+            Variable: c
+          Assignment: 
+            Variable: d
+            Variable: b
+          Assignment: 
+            Variable: d
+            Variable: c
+        Skip: 
+
+Begin type checking...programs/nested.cpp
+
+Type map:
+{ <d, float>, <b, float>, <c, float>, <a, float> }
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {<a, float>, <b, float>, <c, float>, <d, float>}
+  Block: 
+    Assignment: 
+      Variable: a
+      FloatValue: 2.0
+    Assignment: 
+      Variable: b
+      FloatValue: 4.5
+    Assignment: 
+      Variable: c
+      FloatValue: 3.3
+    Assignment: 
+      Variable: d
+      FloatValue: 2.2
+    Conditional: 
+      Binary: 
+        Operator: &&
+        Binary: 
+          Operator: FLOAT>
+          Variable: a
+          Variable: b
+        Binary: 
+          Operator: FLOAT>
+          Variable: a
+          Variable: c
+      Assignment: 
+        Variable: d
+        Variable: a
+      Conditional: 
+        Binary: 
+          Operator: FLOAT>
+          Variable: b
+          Variable: a
+        Conditional: 
+          Binary: 
+            Operator: FLOAT>
+            Variable: b
+            Variable: c
+          Assignment: 
+            Variable: d
+            Variable: b
+          Assignment: 
+            Variable: d
+            Variable: c
+        Skip: 
+
+Begin interpreting...programs/nested.cpp
+
+Final State
+{ <d, 4.5>, <b, 4.5>, <c, 3.3>, <a, 2.0> }
