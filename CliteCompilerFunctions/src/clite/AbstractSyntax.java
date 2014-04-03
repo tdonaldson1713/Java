@@ -90,7 +90,7 @@ class Function {
 		int level = 1;
 		Indenter indent = new Indenter(level);
 		indent.display(getClass().toString().substring(12) + " = ");
-		System.out.print(id + ";" + "Return type = " + t);
+		System.out.print(id + ";" + "\tReturn type = " + t);
 		System.out.println("params = ");
 		params.display(level+1);
 		System.out.println("locals = ");

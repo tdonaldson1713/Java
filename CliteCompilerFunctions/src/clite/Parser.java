@@ -10,6 +10,7 @@ package clite;
 public class Parser {
 
     Token token;          // current token from the input stream
+	Variable cFunction;
     Lexer lexer;
     String funcId = "main";
 
@@ -51,56 +52,98 @@ public class Parser {
         match(TokenType.RightBrace);
         return new Program(decpart, body);
     }
-
-    private Declarations declarations () {
+	
+	private Program program() {
+		Declarations globals = new Declarations();
+		Functions functions = new Functions();
+		globals.putAll(functionOrGlobal(functions));
+		return new Program(globals, functions);
+	}
+	
+    private Declarations declarations (Functions functions) {
         // Declarations --> { Declaration }
         Declarations ds = new Declarations ();
-        while (isType( )) {
-            declaration(ds);
+        
+		while (isType()) {
+            declaration(ds, functions);
         }
+		
         return ds;
     }
 
-//    private void declaration (Declarations ds) {
-//        // Declaration  --> Type Identifier { , Identifier } ;
-//        Type t = type();
-//        Variable v = new Variable(match(TokenType.Identifier));
-//        ds.add(new Declaration(v, t));
-//        while (token.type().equals(TokenType.Comma)) {
-//            match(TokenType.Comma);
-//            v = new Variable(match(TokenType.Identifier));
-//            ds.add(new Declaration(v, t));
-//        }
-//        match(TokenType.Semicolon);
-//    }
-
-    private void declaration (Declarations ds) {
-        // Declaration  --> Type Identifier [ [ Integer ] ] { , Identifier [ [ Integer ] ] } ;
-        Type t = type();
-        Variable v = new Variable(match(TokenType.Identifier));
-        if (token.type().equals(TokenType.LeftBracket))
-        {
-            match(TokenType.LeftBracket);
-            IntValue i = new IntValue(Integer.parseInt(match(TokenType.IntLiteral)));
-            ds.add(new ArrayDecl(v, t, i));
-            match(TokenType.RightBracket);
-        }
-        else
-            ds.add(new VariableDecl(v, t));
-        while (token.type().equals(TokenType.Comma)) {
-            match(TokenType.Comma);
-            v = new Variable(match(TokenType.Identifier));
-            if (token.type().equals(TokenType.LeftBracket)) {
-                match(TokenType.LeftBracket);
-                IntValue i = new IntValue(Integer.parseInt(match(TokenType.IntLiteral)));
-                ds.add(new ArrayDecl(v, t, i));
-                match(TokenType.RightBracket);
-            }
-            else
-                ds.add(new VariableDecl(v, t));
-        }
-        match(TokenType.Semicolon);
-    }
+	private void Declaration declaration(Declarations d, Functions f) {
+		Type t = type();
+		
+		while (!token.type().equals(TokenType.EOF)) {
+			Variable v = new Variable(token.value);
+			match(TokenType.Identifier);
+			
+			// Let's check to see if we have a function by checking if 
+			// the next character is a paranethesis.
+			if (token.type().equals(TokenType.LeftParan)) {
+				functions(f, t,	v);
+				if (isType()) {
+					type = type();
+				} else { 
+					break;
+				}
+			} else { // Otherwise it is a variable.
+				Declaration globalDec = d.put(v.toString(), new VariableDecl(v, t));
+				if (globalDec != null) {
+					System.err.println("Declarations of variable already exists.");
+				}
+				
+				if (token.type().equals(TokenType.Comma)) {
+					match(TokenType.Comma);
+					} else if (token.type().equals(TokenType.Semicolon)) {
+						match(TokenType.Semicolon);
+						if (isType()) {
+							t = type();
+						} else {
+							break;
+						}
+					} else {
+						error(" ; or ,");
+					}
+				}
+			}
+		}
+	}
+	
+	private void function(Functions f, Type t, Variable v) {
+		currentFunction = v;
+		match(TokenType.LeftParan);
+		Declarations params = parameters();
+		match(TokenType.RightParan);
+		match(TokenType.LeftBrace);
+		Declarations locals = declarations(f);
+		Block body = statements();
+		match(TokenType.RightBrace);
+		
+		Functions newFunctions = new Function(t, v, params, locals, body);
+		if (newFunctions != null) {
+			System.err.println("Declarations of variable already exists.");
+		}
+	}
+	
+	private Declarations parameters() {
+		Declarations params = new Declarations();
+		
+		// We simply need to declare a new variable for each parameter.
+		// This is simply a rehash of what we do for local variables inside a function
+		while (!token.type().equals(TokenType.RightParan) {
+			Type t = type();
+			Variable v = new Variable(token.value());
+			match(TokenType.Identifier);
+			params.put(v.toString(), new VariableDecl(v, t));
+			
+			if (token.type().equals(TokenType.Comma)) {
+				match(TokenType.Comma);
+			}
+		}
+		
+		return params;
+	}
 
     private Type type () {
         // Type  -->  int | bool | float | char
