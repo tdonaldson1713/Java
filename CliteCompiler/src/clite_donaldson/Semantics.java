@@ -5,6 +5,9 @@
 
 package clite_donaldson;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 public class Semantics {
 	public State M(Program p) {
 		return M(p.body, initialState(p.decpart));
@@ -18,10 +21,40 @@ public class Semantics {
 				state.put(vd.v, Value.mkValue(vd.t));
 			} else if (decl instanceof ArrayDecl) {
 				ArrayDecl ad = (ArrayDecl) decl;
+
+				/*
+				 * 
+				 */
+				if (ad.t.id.equals("int")) {
+					ArrayList<Integer> newIntArray = new ArrayList<Integer>();
+					for (int a = 0; a < ad.s.intValue(); a++) {
+						newIntArray.add(null);
+					}
+					state.intArray.put(new ArrayRef(ad.v.id, ad.s), newIntArray);
+				} else if (ad.t.id.equals("float")) {
+					ArrayList<Float> newFloatArray = new ArrayList<Float>();
+					for (int a = 0; a < ad.s.intValue(); a++) {
+						newFloatArray.add(null);
+					}
+					state.floatArray.put(new ArrayRef(ad.v.id, ad.s), newFloatArray);
+				} else if (ad.t.id.equals("char")) {
+					ArrayList<Character> newCharArray = new ArrayList<Character>();
+					for (int a = 0; a < ad.s.intValue(); a++) {
+						newCharArray.add(null);
+					}
+					state.charArray.put(new ArrayRef(ad.v.id, ad.s), newCharArray);
+				} else if (ad.t.id.equals("bool")) {
+					ArrayList<Boolean> newBoolArray = new ArrayList<Boolean>();
+					for (int a = 0; a < ad.s.intValue(); a++) {
+						newBoolArray.add(null);
+					}
+					state.boolArray.put(new ArrayRef(ad.v.id, ad.s), newBoolArray);
+				}
+
 				state.put(new ArrayRef(ad.v.id, ad.s), Value.mkValue(ad.t));
 			}
 		}
-		
+
 		return state;
 	}
 
@@ -59,8 +92,8 @@ public class Semantics {
 			ArrayRef newAR = new ArrayRef(ar.id, M(ar.index, state));
 			return state.update(newAR, M(a.source, state));
 		}
-		
-		return state.update(a.target, M(a.source, state));
+
+		return state.update((Variable) a.target, M(a.source, state));
 	}
 
 	public State M(Conditional c, State state) {
@@ -91,17 +124,61 @@ public class Semantics {
 		if (e instanceof Value) {
 			return (Value) e;
 		}
-		
+
 		if (e instanceof Variable) {
 			return (Value) state.get(e);
 		}
 
 		if (e instanceof ArrayRef) {
-		    ArrayRef a = (ArrayRef) e;
-		    ArrayRef key = new ArrayRef(a.id, M(a.index, state));
-		    return (Value)(state.get(key));
+			ArrayRef a = (ArrayRef) e;
+			ArrayRef key = new ArrayRef(a.id, M(a.index, state));
+			// First we check to see which type of array it is.
+			// Then we check to see if the parameter is a reference to a variable or a constant value
+			// if it's a value, simply get the array from the corresponding hashmap in State, then get the 
+			// integer value from the index of the ArrayRef. Use this information to create a new IntValue
+			// and cast it to Value on return.
+			
+			// If it's a variable however, cast the index to a variable.
+			// Get the value from that variable using the proper M function (compiler inherently knows what to call)
+			// and then do the same thing as a constant value, but instead of casting the index and getting it's intValue, 
+			// we simply get the intValue of the value that was returned from the M-function call. And do the same as
+			// was needed to do for the Constant case for returning.
+			if (state.intArray.containsKey(key)) {
+				if (a.index instanceof Variable) {
+					Variable v = (Variable) a.index;
+					Value val = M(v, state);
+					return (Value)(new IntValue(state.intArray.get(key).get(val.intValue())));
+				} else {
+					return (Value)(new IntValue(state.intArray.get(key).get(((Value)a.index).intValue())));
+				}
+			} else if (state.floatArray.containsKey(key)) {
+				if (a.index instanceof Variable) {
+					Variable v = (Variable) a.index;
+					Value val = M(v, state);
+					return (Value)(new FloatValue(state.floatArray.get(key).get(val.intValue())));
+				} else {
+					return (Value)(new FloatValue(state.floatArray.get(key).get(((Value) a.index).intValue())));
+				}
+			} else if (state.charArray.containsKey(key)) {
+				if (a.index instanceof Variable) {
+					Variable v = (Variable) a.index;
+					Value val = M(v, state);
+					return (Value)(new CharValue(state.charArray.get(key).get(val.intValue())));
+				} else {
+					return (Value)(new CharValue(state.charArray.get(key).get(((Value)a.index).intValue())));
+				}
+			} else if (state.boolArray.containsKey(key)) {
+				if (a.index instanceof Variable) {
+					Variable v = (Variable) a.index;
+					Value val = M(v, state);
+					return (Value)(new BoolValue(state.boolArray.get(key).get(val.intValue())));
+				} else {
+					return (Value)(new BoolValue(state.boolArray.get(key).get(((Value)a.index).intValue())));
+				}
+			} 
+
 		}
-		
+
 		if (e instanceof Binary) {
 			Binary b = (Binary) e;
 			return applyBinary(b.op, M(b.term1, state), M(b.term2, state));

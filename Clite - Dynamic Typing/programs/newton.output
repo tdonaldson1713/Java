@@ -1,0 +1,53 @@
+Begin parsing... programs/newton.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {}
+  Block: 
+    Assignment: 
+      Variable: a
+      FloatValue: 625.0
+    Assignment: 
+      Variable: x
+      FloatValue: 1.0
+    Loop: 
+      Binary: 
+        Operator: ||
+        Binary: 
+          Operator: >
+          Binary: 
+            Operator: *
+            Variable: x
+            Variable: x
+          Binary: 
+            Operator: +
+            Variable: a
+            FloatValue: 1.0E-4
+        Binary: 
+          Operator: <
+          Binary: 
+            Operator: *
+            Variable: x
+            Variable: x
+          Binary: 
+            Operator: -
+            Variable: a
+            FloatValue: 1.0E-4
+      Assignment: 
+        Variable: x
+        Binary: 
+          Operator: /
+          Binary: 
+            Operator: +
+            Variable: x
+            Binary: 
+              Operator: /
+              Variable: a
+              Variable: x
+          FloatValue: 2.0
+    Assignment: 
+      Variable: result
+      Variable: x
+	  
+Final State
+{ <result, 25.0>, <a, 625.0>, <x, 25.0> }

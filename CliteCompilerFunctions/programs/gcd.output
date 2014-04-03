@@ -1,0 +1,648 @@
+Begin parsing... programs/gcd.cpp
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = rem; Return type = int
+      params = 
+        {<x, int>, <y, int>}
+      locals = 
+        {}
+      Block: 
+        Return: 
+          Variable: rem
+          Binary: 
+            Operator: -
+            Variable: x
+            Binary: 
+              Operator: *
+              Binary: 
+                Operator: /
+                Variable: x
+                Variable: y
+              Variable: y
+
+    Function = gcd; Return type = int
+      params = 
+        {<x, int>, <y, int>}
+      locals = 
+        {<z, int>}
+      Block: 
+        Conditional: 
+          Binary: 
+            Operator: ==
+            Variable: y
+            IntValue: 0
+          Return: 
+            Variable: gcd
+            Variable: x
+          Conditional: 
+            Binary: 
+              Operator: ==
+              Variable: x
+              IntValue: 0
+            Return: 
+              Variable: gcd
+              Variable: y
+            Block: 
+              Assignment: 
+                Variable: z
+                Call: rem
+                  args = 
+                    Variable: x
+                    Variable: y
+              Return: 
+                Variable: gcd
+                Call: gcd
+                  args = 
+                    Variable: y
+                    Variable: z
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<answer, int>}
+      Block: 
+        Assignment: 
+          Variable: answer
+          Call: gcd
+            args = 
+              IntValue: 24
+              IntValue: 10
+
+
+Begin type checking...
+
+Globals = { 
+}
+
+Function rem = { 
+  <rem(<x, int>, <y, int>), int>, 
+  <gcd(<x, int>, <y, int>), int>, 
+  <main(), int>, 
+  <y, int>, 
+  <x, int>
+}
+
+Function gcd = { 
+  <rem(<x, int>, <y, int>), int>, 
+  <gcd(<x, int>, <y, int>), int>, 
+  <z, int>, 
+  <main(), int>, 
+  <y, int>, 
+  <x, int>
+}
+
+Function main = { 
+  <answer, int>, 
+  <rem(<x, int>, <y, int>), int>, 
+  <gcd(<x, int>, <y, int>), int>, 
+  <main(), int>
+}
+
+No type errors
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = rem; Return type = int
+      params = 
+        {<x, int>, <y, int>}
+      locals = 
+        {}
+      Block: 
+        Return: 
+          Variable: rem
+          Binary: 
+            Operator: INT-
+            Variable: x
+            Binary: 
+              Operator: INT*
+              Binary: 
+                Operator: INT/
+                Variable: x
+                Variable: y
+              Variable: y
+
+    Function = gcd; Return type = int
+      params = 
+        {<x, int>, <y, int>}
+      locals = 
+        {<z, int>}
+      Block: 
+        Conditional: 
+          Binary: 
+            Operator: INT==
+            Variable: y
+            IntValue: 0
+          Return: 
+            Variable: gcd
+            Variable: x
+          Conditional: 
+            Binary: 
+              Operator: INT==
+              Variable: x
+              IntValue: 0
+            Return: 
+              Variable: gcd
+              Variable: y
+            Block: 
+              Assignment: 
+                Variable: z
+                Call: rem
+                  args = 
+                    Variable: x
+                    Variable: y
+              Return: 
+                Variable: gcd
+                Call: gcd
+                  args = 
+                    Variable: y
+                    Variable: z
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<answer, int>}
+      Block: 
+        Assignment: 
+          Variable: answer
+          Call: gcd
+            args = 
+              IntValue: 24
+              IntValue: 10
+
+
+Begin interpreting...
+
+Allocated global variables to memory.
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Allocated AR for function main to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Allocated AR for function gcd to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	undef
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+  Heap Area:
+
+Allocated AR for function rem to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	undef
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function rem
+	28	y	int	10
+	32	x	int	24
+	36	rem	int	undef
+	40	s_link	ref	null
+	41	d_link	ref	10
+  Heap Area:
+
+Deallocated AR for function rem from memory
+    AR for function rem
+	28	y	int	10
+	32	x	int	24
+	36	rem	int	4
+	40	s_link	ref	null
+	41	d_link	ref	10
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	undef
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+  Heap Area:
+
+Allocated AR for function gcd to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	undef
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function rem to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	undef
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+    AR for function rem
+	46	y	int	4
+	50	x	int	10
+	54	rem	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	28
+  Heap Area:
+
+Deallocated AR for function rem from memory
+    AR for function rem
+	46	y	int	4
+	50	x	int	10
+	54	rem	int	2
+	58	s_link	ref	null
+	59	d_link	ref	28
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	undef
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function gcd to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	2
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+    AR for function gcd
+	46	z	int	undef
+	50	y	int	2
+	54	x	int	4
+	58	gcd	int	undef
+	62	s_link	ref	null
+	63	d_link	ref	28
+  Heap Area:
+
+Allocated AR for function rem to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	2
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+    AR for function gcd
+	46	z	int	undef
+	50	y	int	2
+	54	x	int	4
+	58	gcd	int	undef
+	62	s_link	ref	null
+	63	d_link	ref	28
+    AR for function rem
+	64	y	int	2
+	68	x	int	4
+	72	rem	int	undef
+	76	s_link	ref	null
+	77	d_link	ref	46
+  Heap Area:
+
+Deallocated AR for function rem from memory
+    AR for function rem
+	64	y	int	2
+	68	x	int	4
+	72	rem	int	0
+	76	s_link	ref	null
+	77	d_link	ref	46
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	2
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+    AR for function gcd
+	46	z	int	undef
+	50	y	int	2
+	54	x	int	4
+	58	gcd	int	undef
+	62	s_link	ref	null
+	63	d_link	ref	28
+  Heap Area:
+
+Allocated AR for function gcd to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	2
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+    AR for function gcd
+	46	z	int	0
+	50	y	int	2
+	54	x	int	4
+	58	gcd	int	undef
+	62	s_link	ref	null
+	63	d_link	ref	28
+    AR for function gcd
+	64	z	int	undef
+	68	y	int	0
+	72	x	int	2
+	76	gcd	int	undef
+	80	s_link	ref	null
+	81	d_link	ref	46
+  Heap Area:
+
+Deallocated AR for function gcd from memory
+    AR for function gcd
+	64	z	int	undef
+	68	y	int	0
+	72	x	int	2
+	76	gcd	int	2
+	80	s_link	ref	null
+	81	d_link	ref	46
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	2
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+    AR for function gcd
+	46	z	int	0
+	50	y	int	2
+	54	x	int	4
+	58	gcd	int	undef
+	62	s_link	ref	null
+	63	d_link	ref	28
+  Heap Area:
+
+Deallocated AR for function gcd from memory
+    AR for function gcd
+	46	z	int	0
+	50	y	int	2
+	54	x	int	4
+	58	gcd	int	2
+	62	s_link	ref	null
+	63	d_link	ref	28
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+    AR for function gcd
+	28	z	int	2
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	undef
+	44	s_link	ref	null
+	45	d_link	ref	10
+  Heap Area:
+
+Deallocated AR for function gcd from memory
+    AR for function gcd
+	28	z	int	2
+	32	y	int	4
+	36	x	int	10
+	40	gcd	int	2
+	44	s_link	ref	null
+	45	d_link	ref	10
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	undef
+	26	s_link	ref	null
+	27	d_link	ref	0
+  Heap Area:
+
+Deallocated AR for function gcd from memory
+    AR for function gcd
+	10	z	int	4
+	14	y	int	10
+	18	x	int	24
+	22	gcd	int	2
+	26	s_link	ref	null
+	27	d_link	ref	0
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Deallocated AR for function main from memory
+    AR for function main
+	0	answer	int	2
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Final State
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:

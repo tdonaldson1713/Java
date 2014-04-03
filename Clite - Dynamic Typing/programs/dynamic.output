@@ -1,0 +1,45 @@
+Begin parsing... programs/dynamic.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {}
+  Block: 
+    Assignment: 
+      Variable: f
+      IntValue: 1
+    Assignment: 
+      Variable: c
+      FloatValue: 2.0
+    Assignment: 
+      Variable: b
+      CharValue: c
+    Assignment: 
+      Variable: i
+      BoolValue: true
+    Assignment: 
+      Variable: i
+      Variable: f
+    Assignment: 
+      Variable: f
+      Variable: c
+    Assignment: 
+      Variable: c
+      Variable: b
+    Assignment: 
+      Variable: b
+      BoolValue: false
+    Assignment: 
+      ArrayRef: a[0]
+      IntValue: 1
+    Assignment: 
+      ArrayRef: a[1]
+      FloatValue: 2.0
+    Assignment: 
+      ArrayRef: a[2]
+      CharValue: c
+    Assignment: 
+      ArrayRef: a[3]
+      BoolValue: true
+	  
+Final State
+{ <f, 2.0>, <b, false>, <c, c>, <a[4], [1, 2.0, c, true]>, <i, 1> }

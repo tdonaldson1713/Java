@@ -1,0 +1,302 @@
+Begin parsing... programs/functions.cpp
+
+Program (abstract syntax): 
+  Globals:
+    {<h, int>, <i, int>}
+  Functions: 
+    Function = A; Return type = void
+      params = 
+        {<x, int>, <y, int>}
+      locals = 
+        {<i, bool>, <j, bool>}
+      Block: 
+        Call: B
+          args = 
+            Variable: h
+
+    Function = B; Return type = void
+      params = 
+        {<w, int>}
+      locals = 
+        {<j, int>, <k, int>}
+      Block: 
+        Assignment: 
+          Variable: i
+          Binary: 
+            Operator: *
+            IntValue: 2
+            Variable: w
+        Assignment: 
+          Variable: w
+          Binary: 
+            Operator: +
+            Variable: w
+            IntValue: 1
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<a, int>, <b, int>}
+      Block: 
+        Assignment: 
+          Variable: h
+          IntValue: 5
+        Assignment: 
+          Variable: a
+          IntValue: 3
+        Assignment: 
+          Variable: b
+          IntValue: 2
+        Call: A
+          args = 
+            Variable: a
+            Variable: b
+
+
+Begin type checking...
+
+Globals = { 
+  <h, int>, 
+  <i, int>
+}
+
+Function A = { 
+  <A(<x, int>, <y, int>), void>, 
+  <B(<w, int>), void>, 
+  <j, bool>, 
+  <main(), int>, 
+  <y, int>, 
+  <h, int>, 
+  <x, int>, 
+  <i, bool>
+}
+
+Function B = { 
+  <w, int>, 
+  <A(<x, int>, <y, int>), void>, 
+  <B(<w, int>), void>, 
+  <j, int>, 
+  <k, int>, 
+  <main(), int>, 
+  <h, int>, 
+  <i, int>
+}
+
+Function main = { 
+  <b, int>, 
+  <a, int>, 
+  <A(<x, int>, <y, int>), void>, 
+  <B(<w, int>), void>, 
+  <main(), int>, 
+  <h, int>, 
+  <i, int>
+}
+
+No type errors
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Globals:
+    {<h, int>, <i, int>}
+  Functions: 
+    Function = A; Return type = void
+      params = 
+        {<x, int>, <y, int>}
+      locals = 
+        {<i, bool>, <j, bool>}
+      Block: 
+        Call: B
+          args = 
+            Variable: h
+
+    Function = B; Return type = void
+      params = 
+        {<w, int>}
+      locals = 
+        {<j, int>, <k, int>}
+      Block: 
+        Assignment: 
+          Variable: i
+          Binary: 
+            Operator: INT*
+            IntValue: 2
+            Variable: w
+        Assignment: 
+          Variable: w
+          Binary: 
+            Operator: INT+
+            Variable: w
+            IntValue: 1
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<a, int>, <b, int>}
+      Block: 
+        Assignment: 
+          Variable: h
+          IntValue: 5
+        Assignment: 
+          Variable: a
+          IntValue: 3
+        Assignment: 
+          Variable: b
+          IntValue: 2
+        Call: A
+          args = 
+            Variable: a
+            Variable: b
+
+
+Begin interpreting...
+
+Allocated global variables to memory.
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	undef
+	4	i	int	undef
+  Runtime Stack:
+  Heap Area:
+
+Allocated AR for function main to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	undef
+	4	i	int	undef
+  Runtime Stack:
+    AR for function main
+	8	b	int	undef
+	12	a	int	undef
+	16	main	int	undef
+	20	s_link	ref	0
+	21	d_link	ref	null
+  Heap Area:
+
+Allocated AR for function A to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	5
+	4	i	int	undef
+  Runtime Stack:
+    AR for function main
+	8	b	int	2
+	12	a	int	3
+	16	main	int	undef
+	20	s_link	ref	0
+	21	d_link	ref	null
+    AR for function A
+	22	j	bool	undef
+	23	y	int	2
+	27	i	bool	undef
+	28	x	int	3
+	32	s_link	ref	0
+	33	d_link	ref	8
+  Heap Area:
+
+Allocated AR for function B to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	5
+	4	i	int	undef
+  Runtime Stack:
+    AR for function main
+	8	b	int	2
+	12	a	int	3
+	16	main	int	undef
+	20	s_link	ref	0
+	21	d_link	ref	null
+    AR for function A
+	22	j	bool	undef
+	23	y	int	2
+	27	i	bool	undef
+	28	x	int	3
+	32	s_link	ref	0
+	33	d_link	ref	8
+    AR for function B
+	34	w	int	5
+	38	j	int	undef
+	42	k	int	undef
+	46	s_link	ref	0
+	47	d_link	ref	22
+  Heap Area:
+
+Deallocated AR for function B from memory
+    AR for function B
+	34	w	int	6
+	38	j	int	undef
+	42	k	int	undef
+	46	s_link	ref	0
+	47	d_link	ref	22
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	5
+	4	i	int	10
+  Runtime Stack:
+    AR for function main
+	8	b	int	2
+	12	a	int	3
+	16	main	int	undef
+	20	s_link	ref	0
+	21	d_link	ref	null
+    AR for function A
+	22	j	bool	undef
+	23	y	int	2
+	27	i	bool	undef
+	28	x	int	3
+	32	s_link	ref	0
+	33	d_link	ref	8
+  Heap Area:
+
+Deallocated AR for function A from memory
+    AR for function A
+	22	j	bool	undef
+	23	y	int	2
+	27	i	bool	undef
+	28	x	int	3
+	32	s_link	ref	0
+	33	d_link	ref	8
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	5
+	4	i	int	10
+  Runtime Stack:
+    AR for function main
+	8	b	int	2
+	12	a	int	3
+	16	main	int	undef
+	20	s_link	ref	0
+	21	d_link	ref	null
+  Heap Area:
+
+Deallocated AR for function main from memory
+    AR for function main
+	8	b	int	2
+	12	a	int	3
+	16	main	int	undef
+	20	s_link	ref	0
+	21	d_link	ref	null
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	5
+	4	i	int	10
+  Runtime Stack:
+  Heap Area:
+
+Final State
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	h	int	5
+	4	i	int	10
+  Runtime Stack:
+  Heap Area:

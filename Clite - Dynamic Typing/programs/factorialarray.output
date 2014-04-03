@@ -1,0 +1,45 @@
+Begin parsing... programs/factorialarray.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {}
+  Block: 
+    Assignment: 
+      Variable: n
+      IntValue: 5
+    Assignment: 
+      Variable: i
+      IntValue: 1
+    Assignment: 
+      Variable: j
+      IntValue: 0
+    Assignment: 
+      ArrayRef: f[0]
+      IntValue: 1
+    Assignment: 
+      ArrayRef: f[1]
+      IntValue: 1
+    Loop: 
+      Binary: 
+        Operator: <
+        Variable: i
+        Variable: n
+      Block: 
+        Assignment: 
+          Variable: j
+          Variable: i
+        Assignment: 
+          Variable: i
+          Binary: 
+            Operator: +
+            Variable: i
+            IntValue: 1
+        Assignment: 
+          ArrayRef: f[i]
+          Binary: 
+            Operator: *
+            ArrayRef: f[j]
+            Variable: i
+			
+Final State
+{ <f[6], [1, 1, 2, 6, 24, 120]>, <n, 5>, <j, 4>, <i, 5> }

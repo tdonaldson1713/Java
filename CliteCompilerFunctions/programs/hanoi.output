@@ -1,0 +1,577 @@
+Begin parsing... programs/hanoi.cpp
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = moveTower; Return type = void
+      params = 
+        {<disks, int>, <start, char>, <end, char>, <temp, char>}
+      locals = 
+        {}
+      Block: 
+        Conditional: 
+          Binary: 
+            Operator: ==
+            Variable: disks
+            IntValue: 1
+          Skip: 
+          Block: 
+            Call: moveTower
+              args = 
+                Binary: 
+                  Operator: -
+                  Variable: disks
+                  IntValue: 1
+                Variable: start
+                Variable: temp
+                Variable: end
+            Call: moveTower
+              args = 
+                Binary: 
+                  Operator: -
+                  Variable: disks
+                  IntValue: 1
+                Variable: temp
+                Variable: end
+                Variable: start
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<totalDisks, int>}
+      Block: 
+        Assignment: 
+          Variable: totalDisks
+          IntValue: 3
+        Call: moveTower
+          args = 
+            Variable: totalDisks
+            CharValue: A
+            CharValue: B
+            CharValue: C
+
+
+Begin type checking...
+
+Globals = { 
+}
+
+Function moveTower = { 
+  <start, char>, 
+  <moveTower(<disks, int>, <start, char>, <end, char>, <temp, char>), void>, 
+  <temp, char>, 
+  <main(), int>, 
+  <disks, int>, 
+  <end, char>
+}
+
+Function main = { 
+  <totalDisks, int>, 
+  <moveTower(<disks, int>, <start, char>, <end, char>, <temp, char>), void>, 
+  <main(), int>
+}
+
+No type errors
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = moveTower; Return type = void
+      params = 
+        {<disks, int>, <start, char>, <end, char>, <temp, char>}
+      locals = 
+        {}
+      Block: 
+        Conditional: 
+          Binary: 
+            Operator: INT==
+            Variable: disks
+            IntValue: 1
+          Skip: 
+          Block: 
+            Call: moveTower
+              args = 
+                Binary: 
+                  Operator: INT-
+                  Variable: disks
+                  IntValue: 1
+                Variable: start
+                Variable: temp
+                Variable: end
+            Call: moveTower
+              args = 
+                Binary: 
+                  Operator: INT-
+                  Variable: disks
+                  IntValue: 1
+                Variable: temp
+                Variable: end
+                Variable: start
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<totalDisks, int>}
+      Block: 
+        Assignment: 
+          Variable: totalDisks
+          IntValue: 3
+        Call: moveTower
+          args = 
+            Variable: totalDisks
+            CharValue: A
+            CharValue: B
+            CharValue: C
+
+
+Begin interpreting...
+
+Allocated global variables to memory.
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Allocated AR for function main to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Allocated AR for function moveTower to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+  Heap Area:
+
+Allocated AR for function moveTower to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	A
+	20	temp	char	B
+	21	disks	int	2
+	25	end	char	C
+	26	s_link	ref	null
+	27	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function moveTower to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	A
+	20	temp	char	B
+	21	disks	int	2
+	25	end	char	C
+	26	s_link	ref	null
+	27	d_link	ref	10
+    AR for function moveTower
+	28	start	char	A
+	29	temp	char	C
+	30	disks	int	1
+	34	end	char	B
+	35	s_link	ref	null
+	36	d_link	ref	19
+  Heap Area:
+
+Deallocated AR for function moveTower from memory
+    AR for function moveTower
+	28	start	char	A
+	29	temp	char	C
+	30	disks	int	1
+	34	end	char	B
+	35	s_link	ref	null
+	36	d_link	ref	19
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	A
+	20	temp	char	B
+	21	disks	int	2
+	25	end	char	C
+	26	s_link	ref	null
+	27	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function moveTower to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	A
+	20	temp	char	B
+	21	disks	int	2
+	25	end	char	C
+	26	s_link	ref	null
+	27	d_link	ref	10
+    AR for function moveTower
+	28	start	char	B
+	29	temp	char	A
+	30	disks	int	1
+	34	end	char	C
+	35	s_link	ref	null
+	36	d_link	ref	19
+  Heap Area:
+
+Deallocated AR for function moveTower from memory
+    AR for function moveTower
+	28	start	char	B
+	29	temp	char	A
+	30	disks	int	1
+	34	end	char	C
+	35	s_link	ref	null
+	36	d_link	ref	19
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	A
+	20	temp	char	B
+	21	disks	int	2
+	25	end	char	C
+	26	s_link	ref	null
+	27	d_link	ref	10
+  Heap Area:
+
+Deallocated AR for function moveTower from memory
+    AR for function moveTower
+	19	start	char	A
+	20	temp	char	B
+	21	disks	int	2
+	25	end	char	C
+	26	s_link	ref	null
+	27	d_link	ref	10
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+  Heap Area:
+
+Allocated AR for function moveTower to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	C
+	20	temp	char	A
+	21	disks	int	2
+	25	end	char	B
+	26	s_link	ref	null
+	27	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function moveTower to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	C
+	20	temp	char	A
+	21	disks	int	2
+	25	end	char	B
+	26	s_link	ref	null
+	27	d_link	ref	10
+    AR for function moveTower
+	28	start	char	C
+	29	temp	char	B
+	30	disks	int	1
+	34	end	char	A
+	35	s_link	ref	null
+	36	d_link	ref	19
+  Heap Area:
+
+Deallocated AR for function moveTower from memory
+    AR for function moveTower
+	28	start	char	C
+	29	temp	char	B
+	30	disks	int	1
+	34	end	char	A
+	35	s_link	ref	null
+	36	d_link	ref	19
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	C
+	20	temp	char	A
+	21	disks	int	2
+	25	end	char	B
+	26	s_link	ref	null
+	27	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function moveTower to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	C
+	20	temp	char	A
+	21	disks	int	2
+	25	end	char	B
+	26	s_link	ref	null
+	27	d_link	ref	10
+    AR for function moveTower
+	28	start	char	A
+	29	temp	char	C
+	30	disks	int	1
+	34	end	char	B
+	35	s_link	ref	null
+	36	d_link	ref	19
+  Heap Area:
+
+Deallocated AR for function moveTower from memory
+    AR for function moveTower
+	28	start	char	A
+	29	temp	char	C
+	30	disks	int	1
+	34	end	char	B
+	35	s_link	ref	null
+	36	d_link	ref	19
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+    AR for function moveTower
+	19	start	char	C
+	20	temp	char	A
+	21	disks	int	2
+	25	end	char	B
+	26	s_link	ref	null
+	27	d_link	ref	10
+  Heap Area:
+
+Deallocated AR for function moveTower from memory
+    AR for function moveTower
+	19	start	char	C
+	20	temp	char	A
+	21	disks	int	2
+	25	end	char	B
+	26	s_link	ref	null
+	27	d_link	ref	10
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+  Heap Area:
+
+Deallocated AR for function moveTower from memory
+    AR for function moveTower
+	10	start	char	A
+	11	temp	char	C
+	12	disks	int	3
+	16	end	char	B
+	17	s_link	ref	null
+	18	d_link	ref	0
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Deallocated AR for function main from memory
+    AR for function main
+	0	totalDisks	int	3
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Final State
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:

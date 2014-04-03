@@ -1,0 +1,182 @@
+Begin parsing... programs/newton.cpp
+
+Program (abstract syntax): 
+  Globals:
+    {<a, float>, <x, float>, <result, float>}
+  Functions: 
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {}
+      Block: 
+        Assignment: 
+          Variable: a
+          FloatValue: 625.0
+        Assignment: 
+          Variable: x
+          FloatValue: 1.0
+        Loop: 
+          Binary: 
+            Operator: ||
+            Binary: 
+              Operator: >
+              Binary: 
+                Operator: *
+                Variable: x
+                Variable: x
+              Binary: 
+                Operator: +
+                Variable: a
+                FloatValue: 1.0E-4
+            Binary: 
+              Operator: <
+              Binary: 
+                Operator: *
+                Variable: x
+                Variable: x
+              Binary: 
+                Operator: -
+                Variable: a
+                FloatValue: 1.0E-4
+          Assignment: 
+            Variable: x
+            Binary: 
+              Operator: /
+              Binary: 
+                Operator: +
+                Variable: x
+                Binary: 
+                  Operator: /
+                  Variable: a
+                  Variable: x
+              FloatValue: 2.0
+        Assignment: 
+          Variable: result
+          Variable: x
+
+
+Begin type checking...
+
+Globals = { 
+  <result, float>, 
+  <a, float>, 
+  <x, float>
+}
+
+Function main = { 
+  <result, float>, 
+  <main(), int>, 
+  <a, float>, 
+  <x, float>
+}
+
+No type errors
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Globals:
+    {<a, float>, <x, float>, <result, float>}
+  Functions: 
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {}
+      Block: 
+        Assignment: 
+          Variable: a
+          FloatValue: 625.0
+        Assignment: 
+          Variable: x
+          FloatValue: 1.0
+        Loop: 
+          Binary: 
+            Operator: ||
+            Binary: 
+              Operator: FLOAT>
+              Binary: 
+                Operator: FLOAT*
+                Variable: x
+                Variable: x
+              Binary: 
+                Operator: FLOAT+
+                Variable: a
+                FloatValue: 1.0E-4
+            Binary: 
+              Operator: FLOAT<
+              Binary: 
+                Operator: FLOAT*
+                Variable: x
+                Variable: x
+              Binary: 
+                Operator: FLOAT-
+                Variable: a
+                FloatValue: 1.0E-4
+          Assignment: 
+            Variable: x
+            Binary: 
+              Operator: FLOAT/
+              Binary: 
+                Operator: FLOAT+
+                Variable: x
+                Binary: 
+                  Operator: FLOAT/
+                  Variable: a
+                  Variable: x
+              FloatValue: 2.0
+        Assignment: 
+          Variable: result
+          Variable: x
+
+
+Begin interpreting...
+
+Allocated global variables to memory.
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	result	float	undef
+	4	a	float	undef
+	8	x	float	undef
+  Runtime Stack:
+  Heap Area:
+
+Allocated AR for function main to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	result	float	undef
+	4	a	float	undef
+	8	x	float	undef
+  Runtime Stack:
+    AR for function main
+	12	main	int	undef
+	16	s_link	ref	0
+	17	d_link	ref	null
+  Heap Area:
+
+Deallocated AR for function main from memory
+    AR for function main
+	12	main	int	undef
+	16	s_link	ref	0
+	17	d_link	ref	null
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	result	float	25.0
+	4	a	float	625.0
+	8	x	float	25.0
+  Runtime Stack:
+  Heap Area:
+
+Final State
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+	0	result	float	25.0
+	4	a	float	625.0
+	8	x	float	25.0
+  Runtime Stack:
+  Heap Area:

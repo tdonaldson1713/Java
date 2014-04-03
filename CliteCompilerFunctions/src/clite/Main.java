@@ -2,12 +2,12 @@
  * The driver code for the project
  */
 
-package clite_donaldson;
+package clite;
 
 public class Main {
 
     public static void main(String[] args) {
-        String filename = "programs/newton.cpp";
+        String filename = "programs/functions.cpp";
     	System.out.println("Begin parsing... " + filename);
     	Parser parser  = new Parser(new Lexer(filename));
         Program prog = parser.program();
@@ -22,10 +22,10 @@ public class Main {
         System.out.println("\nTransformed Abstract Syntax Tree");
         out.display();
 
-        System.out.println("\nBegin interpreting..." + filename);
+        /*System.out.println("\nBegin interpreting..." + filename);
         Semantics semantics = new Semantics( );
         State state = semantics.M(out);
         System.out.println("\nFinal State");
-        state.display( );
+        state.display( );*/
     }
 }

@@ -1,0 +1,5376 @@
+Begin parsing... programs/recFib.cpp
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = fibonacci; Return type = int
+      params = 
+        {<n, int>}
+      locals = 
+        {}
+      Block: 
+        Conditional: 
+          Binary: 
+            Operator: <
+            Variable: n
+            IntValue: 2
+          Return: 
+            Variable: fibonacci
+            Variable: n
+          Return: 
+            Variable: fibonacci
+            Binary: 
+              Operator: +
+              Call: fibonacci
+                args = 
+                  Binary: 
+                    Operator: -
+                    Variable: n
+                    IntValue: 1
+              Call: fibonacci
+                args = 
+                  Binary: 
+                    Operator: -
+                    Variable: n
+                    IntValue: 2
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<answer, int>}
+      Block: 
+        Assignment: 
+          Variable: answer
+          Call: fibonacci
+            args = 
+              IntValue: 8
+
+
+Begin type checking...
+
+Globals = { 
+}
+
+Function fibonacci = { 
+  <n, int>, 
+  <fibonacci(<n, int>), int>, 
+  <main(), int>
+}
+
+Function main = { 
+  <answer, int>, 
+  <fibonacci(<n, int>), int>, 
+  <main(), int>
+}
+
+No type errors
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = fibonacci; Return type = int
+      params = 
+        {<n, int>}
+      locals = 
+        {}
+      Block: 
+        Conditional: 
+          Binary: 
+            Operator: INT<
+            Variable: n
+            IntValue: 2
+          Return: 
+            Variable: fibonacci
+            Variable: n
+          Return: 
+            Variable: fibonacci
+            Binary: 
+              Operator: INT+
+              Call: fibonacci
+                args = 
+                  Binary: 
+                    Operator: INT-
+                    Variable: n
+                    IntValue: 1
+              Call: fibonacci
+                args = 
+                  Binary: 
+                    Operator: INT-
+                    Variable: n
+                    IntValue: 2
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<answer, int>}
+      Block: 
+        Assignment: 
+          Variable: answer
+          Call: fibonacci
+            args = 
+              IntValue: 8
+
+
+Begin interpreting...
+
+Allocated global variables to memory.
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Allocated AR for function main to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	2
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	2
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+    AR for function fibonacci
+	80	n	int	1
+	84	fibonacci	int	undef
+	88	s_link	ref	null
+	89	d_link	ref	70
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	80	n	int	1
+	84	fibonacci	int	1
+	88	s_link	ref	null
+	89	d_link	ref	70
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	2
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	2
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+    AR for function fibonacci
+	80	n	int	0
+	84	fibonacci	int	undef
+	88	s_link	ref	null
+	89	d_link	ref	70
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	80	n	int	0
+	84	fibonacci	int	0
+	88	s_link	ref	null
+	89	d_link	ref	70
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	2
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	2
+	74	fibonacci	int	1
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	1
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	3
+	64	fibonacci	int	2
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	1
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	0
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	4
+	54	fibonacci	int	3
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	1
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	0
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	2
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	5
+	44	fibonacci	int	5
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	1
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	0
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	2
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	0
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	3
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	30	n	int	6
+	34	fibonacci	int	8
+	38	s_link	ref	null
+	39	d_link	ref	20
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	1
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	0
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	2
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	0
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	3
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	0
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	2
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	5
+	38	s_link	ref	null
+	39	d_link	ref	20
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	20	n	int	7
+	24	fibonacci	int	13
+	28	s_link	ref	null
+	29	d_link	ref	10
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	1
+	74	fibonacci	int	1
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	undef
+	78	s_link	ref	null
+	79	d_link	ref	60
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	70	n	int	0
+	74	fibonacci	int	0
+	78	s_link	ref	null
+	79	d_link	ref	60
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	2
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	3
+	54	fibonacci	int	2
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	0
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	4
+	44	fibonacci	int	3
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	0
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	2
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	30	n	int	5
+	34	fibonacci	int	5
+	38	s_link	ref	null
+	39	d_link	ref	20
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	1
+	64	fibonacci	int	1
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	undef
+	68	s_link	ref	null
+	69	d_link	ref	50
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	60	n	int	0
+	64	fibonacci	int	0
+	68	s_link	ref	null
+	69	d_link	ref	50
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	2
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	3
+	44	fibonacci	int	2
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	2
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	2
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	1
+	54	fibonacci	int	1
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	2
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	2
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+    AR for function fibonacci
+	50	n	int	0
+	54	fibonacci	int	undef
+	58	s_link	ref	null
+	59	d_link	ref	40
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	50	n	int	0
+	54	fibonacci	int	0
+	58	s_link	ref	null
+	59	d_link	ref	40
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+    AR for function fibonacci
+	40	n	int	2
+	44	fibonacci	int	undef
+	48	s_link	ref	null
+	49	d_link	ref	30
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	40	n	int	2
+	44	fibonacci	int	1
+	48	s_link	ref	null
+	49	d_link	ref	30
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	undef
+	38	s_link	ref	null
+	39	d_link	ref	20
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	30	n	int	4
+	34	fibonacci	int	3
+	38	s_link	ref	null
+	39	d_link	ref	20
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	undef
+	28	s_link	ref	null
+	29	d_link	ref	10
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	20	n	int	6
+	24	fibonacci	int	8
+	28	s_link	ref	null
+	29	d_link	ref	10
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	undef
+	18	s_link	ref	null
+	19	d_link	ref	0
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	10	n	int	8
+	14	fibonacci	int	21
+	18	s_link	ref	null
+	19	d_link	ref	0
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Deallocated AR for function main from memory
+    AR for function main
+	0	answer	int	21
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Final State
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:

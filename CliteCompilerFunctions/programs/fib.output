@@ -1,0 +1,228 @@
+Begin parsing... programs/fib.cpp
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = fibonacci; Return type = int
+      params = 
+        {<n, int>}
+      locals = 
+        {<fib0, int>, <fib1, int>, <temp, int>, <k, int>}
+      Block: 
+        Assignment: 
+          Variable: fib0
+          IntValue: 0
+        Assignment: 
+          Variable: fib1
+          IntValue: 1
+        Assignment: 
+          Variable: k
+          Variable: n
+        Loop: 
+          Binary: 
+            Operator: >
+            Variable: k
+            IntValue: 0
+          Block: 
+            Assignment: 
+              Variable: temp
+              Variable: fib0
+            Assignment: 
+              Variable: fib0
+              Variable: fib1
+            Assignment: 
+              Variable: fib1
+              Binary: 
+                Operator: +
+                Variable: fib0
+                Variable: temp
+            Assignment: 
+              Variable: k
+              Binary: 
+                Operator: -
+                Variable: k
+                IntValue: 1
+        Return: 
+          Variable: fibonacci
+          Variable: fib0
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<answer, int>}
+      Block: 
+        Assignment: 
+          Variable: answer
+          Call: fibonacci
+            args = 
+              IntValue: 8
+
+
+Begin type checking...
+
+Globals = { 
+}
+
+Function fibonacci = { 
+  <n, int>, 
+  <fibonacci(<n, int>), int>, 
+  <temp, int>, 
+  <main(), int>, 
+  <fib1, int>, 
+  <k, int>, 
+  <fib0, int>
+}
+
+Function main = { 
+  <answer, int>, 
+  <fibonacci(<n, int>), int>, 
+  <main(), int>
+}
+
+No type errors
+
+Transformed Abstract Syntax Tree
+
+Program (abstract syntax): 
+  Globals:
+    {}
+  Functions: 
+    Function = fibonacci; Return type = int
+      params = 
+        {<n, int>}
+      locals = 
+        {<fib0, int>, <fib1, int>, <temp, int>, <k, int>}
+      Block: 
+        Assignment: 
+          Variable: fib0
+          IntValue: 0
+        Assignment: 
+          Variable: fib1
+          IntValue: 1
+        Assignment: 
+          Variable: k
+          Variable: n
+        Loop: 
+          Binary: 
+            Operator: INT>
+            Variable: k
+            IntValue: 0
+          Block: 
+            Assignment: 
+              Variable: temp
+              Variable: fib0
+            Assignment: 
+              Variable: fib0
+              Variable: fib1
+            Assignment: 
+              Variable: fib1
+              Binary: 
+                Operator: INT+
+                Variable: fib0
+                Variable: temp
+            Assignment: 
+              Variable: k
+              Binary: 
+                Operator: INT-
+                Variable: k
+                IntValue: 1
+        Return: 
+          Variable: fibonacci
+          Variable: fib0
+
+    Function = main; Return type = int
+      params = 
+        {}
+      locals = 
+        {<answer, int>}
+      Block: 
+        Assignment: 
+          Variable: answer
+          Call: fibonacci
+            args = 
+              IntValue: 8
+
+
+Begin interpreting...
+
+Allocated global variables to memory.
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Allocated AR for function main to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Allocated AR for function fibonacci to memory
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+    AR for function fibonacci
+	10	n	int	8
+	14	temp	int	undef
+	18	fib1	int	undef
+	22	k	int	undef
+	26	fib0	int	undef
+	30	fibonacci	int	undef
+	34	s_link	ref	null
+	35	d_link	ref	0
+  Heap Area:
+
+Deallocated AR for function fibonacci from memory
+    AR for function fibonacci
+	10	n	int	8
+	14	temp	int	13
+	18	fib1	int	34
+	22	k	int	0
+	26	fib0	int	21
+	30	fibonacci	int	21
+	34	s_link	ref	null
+	35	d_link	ref	0
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+    AR for function main
+	0	answer	int	undef
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+  Heap Area:
+
+Deallocated AR for function main from memory
+    AR for function main
+	0	answer	int	21
+	4	main	int	undef
+	8	s_link	ref	null
+	9	d_link	ref	null
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:
+
+Final State
+Current state:
+	MemAddr Var/Ref Type    Value
+  Static Area:
+  Runtime Stack:
+  Heap Area:

@@ -1,0 +1,52 @@
+Begin parsing... programs/nested.cpp
+
+Program (abstract syntax): 
+  Declarations: 
+    Declarations = {}
+  Block: 
+    Assignment: 
+      Variable: a
+      FloatValue: 2.0
+    Assignment: 
+      Variable: b
+      FloatValue: 4.5
+    Assignment: 
+      Variable: c
+      FloatValue: 3.3
+    Assignment: 
+      Variable: d
+      FloatValue: 2.2
+    Conditional: 
+      Binary: 
+        Operator: &&
+        Binary: 
+          Operator: >
+          Variable: a
+          Variable: b
+        Binary: 
+          Operator: >
+          Variable: a
+          Variable: c
+      Assignment: 
+        Variable: d
+        CharValue: a
+      Conditional: 
+        Binary: 
+          Operator: >
+          Variable: b
+          Variable: a
+        Conditional: 
+          Binary: 
+            Operator: >
+            Variable: b
+            Variable: c
+          Assignment: 
+            Variable: d
+            CharValue: b
+          Assignment: 
+            Variable: d
+            CharValue: c
+        Skip: 
+		
+Final State
+{ <d, b>, <b, 4.5>, <c, 3.3>, <a, 2.0> }
