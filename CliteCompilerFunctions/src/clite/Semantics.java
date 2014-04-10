@@ -233,7 +233,6 @@ public class Semantics {
 			return (Value)(state.get(e));
 		if (e instanceof Binary) {
 			Binary b = (Binary)e;
-			b.display(0);
 			return applyBinary (b.op,
 					M(b.term1, f, state), M(b.term2, f, state));
 		}

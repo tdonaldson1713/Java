@@ -7,7 +7,7 @@ package clite;
 public class Main {
 
     public static void main(String[] args) {
-        String filename = "programs/gcd.cpp";
+        String filename = "programs/recFib.cpp";
         
         // Lexer/Parsing Section
     	System.out.println("Begin parsing... " + filename);
@@ -27,7 +27,7 @@ public class Main {
         out.display();
 
         // Semantics section
-        System.out.println("\nBegin interpreting..." + filename);
+        System.out.println("\n\n\nBegin interpreting..." + filename);
         Semantics semantics = new Semantics( );
         State state = semantics.M(out);
         System.out.println("\nFinal State");
