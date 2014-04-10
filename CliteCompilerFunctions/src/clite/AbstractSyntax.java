@@ -37,7 +37,6 @@ class Program {
 		indent.display("Program (abstract syntax): ");
 		globals.display(level+1);
 		functions.display(level+1);
-		System.out.println();
 	}
 }
 
@@ -63,21 +62,19 @@ class Functions extends ArrayList<Function> {
 	public void display(int level) {
 		Indenter indent = new Indenter(level);
 		indent.display(getClass().toString().substring(12) + ": ");
-		indent.display("  Function:");
-		String sep = "";
-		
+
 		for (Function fcn : this) {
-			fcn.display();
+			fcn.display(1);
 		}
 	}
 }
 
-class Function {
+class Function implements Statement{
 	Type t;
 	Variable id;
 	Declarations params, locals;
 	Block body;
-	
+
 	public Function(Type t, Variable id, Declarations params, Declarations locals, Block body) {
 		this.t = t;
 		this.id = id;
@@ -85,56 +82,69 @@ class Function {
 		this.locals = locals;
 		this.body = body;
 	}
-	
-	public void display() {
-		int level = 1;
-		Indenter indent = new Indenter(level);
+
+	@Override
+	public void display(int level) {
+		String sep = "";
+		Indenter indent = new Indenter(level+1);
 		indent.display(getClass().toString().substring(12) + " = ");
-		System.out.print(id + ";" + "\tReturn type = " + t);
-		System.out.println("params = ");
-		params.display(level+1);
-		System.out.println("locals = ");
-		locals.display(level+1);
-		System.out.println("Block:");
-		body.display(level);
+		System.out.print(id + ";" + "  Return type = " + t.id);
+		indent.level++;
+		indent.display("params = {");
+		if (params != null) {
+			for (int a = 0; a < params.size(); a++) {
+				System.out.print(sep + "<" + params.get(a).v + ", " + params.get(a).t.id + ">");
+				sep = ", ";
+			}
+		}
+		System.out.print("}");
+		indent.display("local = {");
+		sep = "";
+		for (int a = 0; a < locals.size(); a++) {
+			System.out.print(sep + "<" + locals.get(a).v + ", " + locals.get(a).t.id + ">");
+			sep = ", ";
+		}
+		System.out.print("}");
+		body.display(level+2);
 	}
 }
 
-class Call implements Expression, Statement {
+class Call implements Statement, Expression {
 	Variable v;
 	Stack<Expression> arguments;
-	
+
 	public Call(Variable v, Stack<Expression> arguments) {
 		this.v = v;
 		this.arguments = arguments;
 	}
-	
+
 	@Override
 	public void display(int level) {
 		Indenter indent = new Indenter(level);
 		indent.display(getClass().toString().substring(12) + ": " + v.id);
-		
+		indent.level++;
 		if (arguments.size() > 0) {
-			System.out.println("args =");
+			indent.display("args =");
 			for (int a = 0; a < arguments.size(); a++) {
-				arguments.get(a).display(level);
+				arguments.get(a).display(level+2);
 			}
 		}
 	}
 }
 
-class Return {
+class Return implements Statement {
 	Expression result;
 	Variable target;
-	
+
 	public Return(Variable v, Expression e) {
 		result = e;
 		target = v;
 	}
-	
+
+	@Override
 	public void display(int level) {
 		Indenter indent = new Indenter(level);
-		indent.display(getClass().toString().substring(12) + " Return:");
+		indent.display(getClass().toString().substring(12) + ":");
 		target.display(level + 1);
 		result.display(level + 1);
 	}
@@ -301,8 +311,8 @@ class Conditional implements Statement {
 
 	public void display (int level) {
 		Indenter indent = new Indenter(level);
-        indent.display(getClass().toString().substring(12) + ": ");
-        
+		indent.display(getClass().toString().substring(12) + ": ");
+
 		test.display(level+1);
 		thenbranch.display(level+1);
 		assert elsebranch != null : "else branch cannot be null";
@@ -321,8 +331,8 @@ class Loop implements Statement {
 
 	public void display (int level) {
 		Indenter indent = new Indenter(level);
-        indent.display(getClass().toString().substring(12) + ": ");
-        
+		indent.display(getClass().toString().substring(12) + ": ");
+
 		test.display(level+1);
 		body.display(level+1);
 	}
@@ -367,7 +377,12 @@ class Variable extends VariableRef {
 	public String toString( ) { return id; }
 
 	public boolean equals (Object obj) {
-		String s = ((Variable) obj).id;
+		String s = "";
+		if (obj instanceof Function) {
+			s = ((Function) obj).id.id;
+		} else {
+			s = ((Variable) obj).id;
+		}
 		return id.equals(s); // case-sensitive identifiers
 	}
 
@@ -436,7 +451,7 @@ abstract class Value implements Expression {
 		Indenter indent = new Indenter(level);
 		indent.display(getClass().toString().substring(12) + ": ");
 	}
-	
+
 	static Value mkValue (Type type) {
 		if (type == Type.INT) return new IntValue( );
 		if (type == Type.BOOL) return new BoolValue( );
@@ -555,7 +570,7 @@ class Binary implements Expression {
 	public void display (int level) {
 		Indenter indent = new Indenter(level);
 		indent.display(getClass().toString().substring(12) + ": ");
-		
+
 		op.display(level+1);
 		term1.display(level+1);
 		term2.display(level+1);
@@ -575,7 +590,7 @@ class Unary implements Expression {
 	public void display (int level) {
 		Indenter indent = new Indenter(level);
 		indent.display(getClass().toString().substring(12) + ": ");
-		
+
 		op.display(level+1);
 		term.display(level+1);
 	}
