@@ -212,9 +212,10 @@ public class Semantics {
 				if (hasReturn(b.members.get(a))) {
 					return true;
 				}
-
-				return false;
 			}
+			
+			return false;
+			
 		} else if (s instanceof Return) {
 			return true;
 		}
