@@ -124,11 +124,13 @@ public class TypeTransformer {
 			
 			return new Call(c.v, newArgs);
 		}
+		
 		if (s instanceof Return) {
 			Return r = (Return) s;
 			Expression result = T(r.result, f, tm);
 			return new Return(r.target, result);
 		}
+		
 		if (s instanceof Assignment) {
 			Assignment a = (Assignment)s;
 			VariableRef target = a.target;

@@ -7,7 +7,7 @@ package clite;
 public class Main {
 
     public static void main(String[] args) {
-        String filename = "programs/recFib.cpp";
+        String filename = "programs/hanoi.cpp";
         
         // Lexer/Parsing Section
     	System.out.println("Begin parsing... " + filename);
